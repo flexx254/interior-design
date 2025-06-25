@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Interior Design</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: #333;
+    }
+
+    header {
+      background:#A3B18A;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      margin-top:35px;
+      margin-left: 30px;
+      font-size: 1.3rem;
+      color: #fff;
+      position:absolute;
+     
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    nav a:last-child {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Hamburger */
+    .menu-icon {
+      display: none;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      cursor: pointer;
+      z-index: 1100;
+      top:2px;
+    }
+
+    .menu-icon span {
+      background: #fff;
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+    .menu-icon span:nth-child(1) {
+      top: 6px;
+    }
+
+    .menu-icon span:nth-child(2) {
+      top: 13px;
+    }
+
+    .menu-icon span:nth-child(3) {
+      top: 20px;
+    }
+
+    .menu-icon.open span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 13px;
+    }
+
+    .menu-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-icon.open span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 13px;
+    }
+
+    #navMenu {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+        
+
+            
+        
+      }
+
+      #navMenu {
+        display: none;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      #navMenu.show {
+        display: flex;
+      }
+
+      #navMenu a {
+        margin: 10px 0;
+      }
+    }
+.logo-icon{
+  display: flex;
+  align-items: center;
+  gap: 0.1px;
+  color: #fff;
+  
+  
+  margin-left:2px;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  position: relative;
+  margin-left: 0.5rem;
+  
+
+}
+
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+.logo-wrapper {
+  margin-left: clamp(0.5rem, 2vw, 2rem);
+  position: relative;
+}
+
+nav a {
+    color:#3e2723;
+}
+
+nav a:last-child{
+    
+    color: #3e2723;
+}
+
+
+.logo-icon{
+    position:absolute;
+    margin-left: -35px;
+}
+.logo{
+    
+    
+    font-size: 1rem;
+    margin-left:-10px;
+}
+  
+}
+
+
+</style>
+
+
+  <header>
+<div class="logo-wrapper">
+  <div class="logo-icon">
+    <svg width="150" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+      <!-- White background -->
+      <rect width="160" height="40" fill = "#A3B18A"></rect>
+
+      <!-- Icon: Chair inside a white circle -->
+      <g transform="translate(20, 20)">
+        <!-- White circle -->
+        <circle cx="0" cy="0" r="14" stroke="white" stroke-width="2.5" fill="none"/>
+
+        <!-- Chair symbol -->
+        <rect x="-5" y="2" width="10" height="5" fill="white" stroke="white" stroke-width="0.5" />
+        <rect x="-3" y="-5" width="6" height="6" fill="white" stroke="white" stroke-width="0.5" />
+        <line x1="-5" y1="7" x2="-5" y2="10" stroke="white" stroke-width="1" />
+        <line x1="5" y1="7" x2="5" y2="10" stroke="white" stroke-width="1" />
+      </g>
+
+      <!-- Branding Text -->
+      <text x="38" y="22" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="white" letter-spacing="0.5">
+        Smart
+      </text>
+      <text x="38" y="34" font-family="Georgia, serif" font-size="10" fill="white" letter-spacing="0.3">
+        Interior Design
+      </text>
+    </svg>
+  </div>
+</div>
+    <div class="menu-icon" onclick="toggleMenu(this)" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+<nav id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="contact.html">Contacts</a>
+  <a href="portfolio.html">Portforlio</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href = "services.html">Services</a>
+  <a href="faq.html">FAQ</a>
+
+  </header>
+  
+<section id="color-combinations" style="padding: 2rem; font-family: 'Segoe UI', sans-serif; max-width: 900px; margin: auto; color: #333;">
+  <h1 style="color: #a3b18a; font-size: 2.5rem; margin-bottom: 1rem;">Timeless Color Combinations</h1>
+  <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80    " alt="Color palettes in a modern room" style="width: 100%; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+
+  <p style="line-height: 1.8;">
+    Trends come and go, but some color combinations never fade. Whether you're refreshing a room or building a brand, these pairings bring balance, beauty, and sophistication every time.
+  </p>
+
+  <h2 style="color: #a3b18a;">1. Sage Green & Cream</h2>
+  <p style="line-height: 1.8;">
+    Soft, soothing, and organic — sage green (like #a3b18a) paired with cream tones creates a calming space rooted in nature. Perfect for bedrooms and living areas.
+  </p>
+
+  <h2 style="color: #a3b18a;">2. Navy & Gold</h2>
+  <p style="line-height: 1.8;">
+    Deep navy adds depth, while gold adds glam. This luxurious combo is ideal for statement walls, kitchens, or even accent décor.
+  </p>
+
+  <h2 style="color: #a3b18a;">3. Charcoal & Blush</h2>
+  <p style="line-height: 1.8;">
+    The strength of charcoal gray contrasts beautifully with the softness of blush pink, creating a modern but romantic feel that’s suitable for any room.
+  </p>
+
+  <h2 style="color: #a3b18a;">4. Terracotta & White</h2>
+  <p style="line-height: 1.8;">
+    Warm and earthy terracotta gives vibrancy, while crisp white balances and brightens. This combo is ideal for kitchens, patios, and creative workspaces.
+  </p>
+
+  <h2 style="color: #a3b18a;">5. Black & Wood Tones</h2>
+  <p style="line-height: 1.8;">
+    A modern classic. Matte black combined with natural wood creates a sleek, grounded aesthetic — minimalist, yet full of character.
+  </p>
+
+  <p style="margin-top: 2rem; font-weight: bold;">
+    A well-chosen palette can change everything. Let your color combinations reflect your mood, your purpose, and your space’s true potential.
+  </p>
+</section>
+
+
+<footer style="background: #A3B18A; color: white; padding: 2rem;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+    
+    <!-- About -->
+    <div style="flex: 1 1 200px;">
+      <h3 style="margin-bottom: 1rem;">About Smart Interior Design.
+      
+      </h3>
+      <p style="line-height: 1.6;">
+At Smart Interior Design, we believe your space should reflect who you are—functional, elegant, and inspiring. Whether you're transforming a single room or designing an entire property, we’re here to bring your vision to life. With a keen eye for detail, innovative concepts, and timeless style, we create interiors that balance beauty with purpose. From concept to completion, we make interior design seamless, personal, and refreshingly smart. Your dream space begins here.
+
+
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1 1 150px;">
+      <h3 style="margin-bottom: 1rem;">Quick Links</h3>
+<ul style="list-style: none; padding: 0; line-height: 2;">
+  <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+  
+  <li><a href="contact.html" style="color: white; text-decoration: none;">contact</a></li>
+  <li><a href="portfolio.html" style="color: white; text-decoration: none;">Portfolio</a></a></li>
+  <li><a href="about.html" style="color: white; text-decoration: none;">About us</a></li>
+  
+  <li><a href="blog.html" style="color: white; text-decoration: none;">Blog</a></li>
+  
+
+  <li><a href="faq.html" style="color: white; text-decoration: none;">FAQ</a></li>
+</ul>
+    </div>
+
+    <!-- Contact -->
+    <div style="flex: 1 1 200px;">
+      <h3 style="margin-bottom: 1rem;">Contact</h3>
+      <p style="line-height: 1.8;">
+        Email: <a href="mailto:yourname@yourdomain.com" style="color: white;">yourname@yourdomain.com</a><br>
+        WhatsApp: <a href="https://wa.me/2547xxxxxxxx" style="color: white;">+2547xxxxxxxx</a><br>
+        Nairobi, Kenya
+      </p>
+    </div>
+
+    <!-- Social -->
+    <div style="flex: 1 1 150px;">
+      <h3 style="margin-bottom: 1rem;">Follow Us</h3>
+      <p>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">Facebook</a><br>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">Instagram</a><br>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">LinkedIn</a>
+      </p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem;">
+    <p style="margin: 0;">&copy; 2025 Smart Interior Design. All rights reserved.</p>
+  </div>
+</footer>
+  <script>
+    const menuIcon = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    function toggleMenu(icon) {
+      icon.classList.toggle("open");
+      navMenu.classList.toggle("show");
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      if (!menuIcon.contains(event.target) && !navMenu.contains(event.target)) {
+        menuIcon.classList.remove("open");
+        navMenu.classList.remove("show");
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+

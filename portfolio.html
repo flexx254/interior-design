@@ -1,0 +1,662 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Interior Design</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: #333;
+    }
+
+    header {
+      background:#A3B18A;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      margin-top:35px;
+      margin-left: 30px;
+      font-size: 1.3rem;
+      color: #fff;
+      position:absolute;
+     
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    nav a:last-child {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Hamburger */
+    .menu-icon {
+      display: none;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      cursor: pointer;
+      z-index: 1100;
+      top:2px;
+    }
+
+    .menu-icon span {
+      background: #fff;
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+    .menu-icon span:nth-child(1) {
+      top: 6px;
+    }
+
+    .menu-icon span:nth-child(2) {
+      top: 13px;
+    }
+
+    .menu-icon span:nth-child(3) {
+      top: 20px;
+    }
+
+    .menu-icon.open span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 13px;
+    }
+
+    .menu-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-icon.open span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 13px;
+    }
+
+    #navMenu {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+        
+
+            
+        
+      }
+
+      #navMenu {
+        display: none;
+        
+        position:absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      #navMenu.show {
+        display: flex;
+      }
+
+      #navMenu a {
+        margin: 10px 0;
+      }
+    }
+.logo-icon{
+  display: flex;
+  align-items: center;
+  gap: 0.1px;
+  color: #fff;
+  
+  
+  margin-left:2px;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  position: relative;
+  margin-left: 0.5rem;
+  
+
+}
+
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+.logo-wrapper {
+  margin-left: clamp(0.5rem, 2vw, 2rem);
+  position: relative;
+}
+
+nav a {
+    color:#3e2723;
+}
+
+nav a:last-child{
+    
+    color: #3e2723;
+}
+
+
+.logo-icon{
+    position:absolute;
+    margin-left: -35px;
+}
+.logo{
+    
+    
+    font-size: 1rem;
+    margin-left:-10px;
+}
+  
+}
+
+
+</style>
+
+
+  <header>
+<div class="logo-wrapper">
+  <div class="logo-icon">
+    <svg width="150" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+      <!-- White background -->
+      <rect width="160" height="40" fill = "#A3B18A"></rect>
+
+      <!-- Icon: Chair inside a white circle -->
+      <g transform="translate(20, 20)">
+        <!-- White circle -->
+        <circle cx="0" cy="0" r="14" stroke="white" stroke-width="2.5" fill="none"/>
+
+        <!-- Chair symbol -->
+        <rect x="-5" y="2" width="10" height="5" fill="white" stroke="white" stroke-width="0.5" />
+        <rect x="-3" y="-5" width="6" height="6" fill="white" stroke="white" stroke-width="0.5" />
+        <line x1="-5" y1="7" x2="-5" y2="10" stroke="white" stroke-width="1" />
+        <line x1="5" y1="7" x2="5" y2="10" stroke="white" stroke-width="1" />
+      </g>
+
+      <!-- Branding Text -->
+      <text x="38" y="22" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="white" letter-spacing="0.5">
+        Smart
+      </text>
+      <text x="38" y="34" font-family="Georgia, serif" font-size="10" fill="white" letter-spacing="0.3">
+        Interior Design
+      </text>
+    </svg>
+  </div>
+</div>
+    <div class="menu-icon" onclick="toggleMenu(this)" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+<nav id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="contact.html">Contacts</a>
+  <a href="portfolio.html">Portforlio</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href = "services.html">Services</a>
+  <a href="faq.html">FAQ</a>
+
+
+  </header>
+
+
+
+<main>
+
+  <!-- Portfolio Hero -->
+  <section class="portfolio-hero">
+    <h1>Our Portfolio</h1>
+    <p>See how we’ve transformed spaces into timeless masterpieces.</p>
+  </section>
+
+  <!-- Portfolio Gallery -->
+  <section class="portfolio-gallery">
+    <div class="project">
+      <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80" alt="Modern Living Room">
+      <h3>Modern Living Room</h3>
+      
+<section>
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The office space was outdated, cramped, and lacked a cohesive design. Furniture was mismatched and lighting was poor, creating an uninspiring work environment.</p>
+
+  <h4>Strategy Used</h4>
+  <p>We adopted a minimalist design approach with a focus on functionality, natural lighting, and a muted color palette that complements. Ergonomic furniture, smart lighting, and acoustic treatments were key upgrades.</p>
+
+  <h4>Final Look</h4>
+  <p>The transformed space now radiates professionalism and calm. Clean lines, soft greens, and warm lighting work together to create a sleek, inviting executive office ideal for high-level productivity.</p>
+</div>
+
+
+
+</section>
+    </div>
+    <div class="project">
+      <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80  " alt="Executive Office">
+      <h3>Executive Office</h3>
+      <section>
+        
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The executive office was cluttered and lacked identity. The color scheme was inconsistent, and the workspace felt disconnected from the company’s vision and leadership role it was meant to reflect.</p>
+
+  <h4>Strategy Used</h4>
+  <p>We focused on redefining the space through intentional zoning — separating areas for focused work, private meetings, and relaxation. A calm, earthy color palette centered around #A3B18A was introduced, complemented by soft textiles and modern lighting fixtures to improve both comfort and aesthetics.</p>
+
+  <h4>Final Look</h4>
+  <p>The final result is a cohesive and sophisticated executive office. Subtle green hues bring freshness, while clean furniture lines and strategic lighting create an atmosphere of quiet authority and focus, perfect for decision-making and leadership.</p>
+</div>
+        
+      </section>
+      
+    </div>
+    <div class="project">
+      <img src="  https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80      " alt="Minimalist Kitchen">
+      <h3>Minimalist Kitchen</h3>
+      
+      <section>
+        
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The office was dark and uninspiring, with dated fixtures and no defined purpose for different work activities. It lacked personal touches and failed to convey the executive’s role or vision.</p>
+
+  <h4>Strategy Used</h4>
+  <p>Our approach emphasized clarity and calm. We introduced natural materials, opened up the layout, and selected a color scheme led by #A3B18A to reflect balance and authority. Functional zones were created for meetings, deep work, and reflection, using lighting and spatial dividers.</p>
+
+  <h4>Final Look</h4>
+  <p>The redesigned office now feels open, grounded, and empowering. Soft green tones, elegant furnishings, and refined lighting bring out a sense of purpose and poise — a true reflection of thoughtful leadership.</p>
+</div>
+        
+        
+        
+        
+      </section>
+    </div>
+    <div class="project">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80    " alt="Elegant Bedroom">
+      <h3>Elegant Bedroom</h3>
+      <section>
+        
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The space was originally underutilized, with a bland layout and generic furnishings. It lacked character and did little to support focus, comfort, or professional meetings.</p>
+
+  <h4>Strategy Used</h4>
+  <p>We reimagined the environment with a focus on clarity, comfort, and identity. Using #A3B18A as a guiding color, we layered natural textures, introduced built-in storage, and added lighting that could adapt to different tasks and moods throughout the day.</p>
+
+  <h4>Final Look</h4>
+  <p>The new office feels personalized and grounded. With soft greens, clean architecture, and thoughtfully placed elements, the space now supports productivity while reflecting the executive’s unique leadership style.</p>
+</div>
+        
+      </section>
+      
+      
+    </div>
+    <div class="project">
+      <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80     " alt="Retail Space">
+      <h3>Retail Space</h3>
+      
+      <section>
+        
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The office lacked warmth and intention. Cold surfaces, generic decor, and poor spatial organization made it feel more like a temporary holding area than a leader’s workspace.</p>
+
+  <h4>Strategy Used</h4>
+  <p>We restructured the space to prioritize flow and function, introducing biophilic elements and a color scheme led by #A3B18A to create a serene, confident atmosphere. We integrated subtle textures and strategic lighting to soften the environment and add depth.</p>
+
+  <h4>Final Look</h4>
+  <p>The final space is balanced and inspiring — a fusion of nature and professionalism. Every detail, from the soft green accents to the tailored layout, now speaks to calm leadership and intentional design.</p>
+</div>
+        
+        
+        
+      </section>
+    </div>
+    <div class="project">
+      <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80      " alt="Contemporary Dining">
+      <h3>Contemporary Dining</h3>
+      
+      <section>
+        
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The original office felt disconnected and lacked a clear visual identity. It was filled with bulky furniture, minimal daylight, and no cohesive color story, which affected both mood and efficiency.</p>
+
+  <h4>Strategy Used</h4>
+  <p>We began by opening up the space and decluttering. Using #A3B18A as the anchor tone, we introduced complementary natural shades, upgraded the lighting design, and replaced outdated furniture with sleek, modern alternatives that reflected the executive’s personality.</p>
+
+  <h4>Final Look</h4>
+  <p>The result is a polished and functional executive suite. With soothing greens, smart lighting, and elegant finishes, the office now communicates clarity, calm authority, and modern professionalism.</p>
+</div>
+        
+        
+      </section>
+    </div>
+ <div class="project">
+      <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80  " alt="Executive Office">
+      <h3>Coffee Shop Interior</h3>
+      <section>
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The original office felt disconnected and lacked a clear visual identity. It was filled with bulky furniture, minimal daylight, and no cohesive color story, which affected both mood and efficiency.</p>
+
+  <h4>Strategy Used</h4>
+  <p>We began by opening up the space and decluttering. Using #A3B18A as the anchor tone, we introduced complementary natural shades, upgraded the lighting design, and replaced outdated furniture with sleek, modern alternatives that reflected the executive’s personality.</p>
+
+  <h4>Final Look</h4>
+  <p>The result is a polished and functional executive suite. With soothing greens, smart lighting, and elegant finishes, the office now communicates clarity, calm authority, and modern professionalism.</p>
+</div>
+        
+        
+        
+      </section>
+      
+    </div>
+ <div class="project">
+      <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&h=600&q=80  " alt="Executive Office">
+      <h3>Hotel Lobby</h3>
+      
+      <section>
+        
+<div class="project-description">
+  <h4>Status Before</h4>
+  <p>The original office felt disconnected and lacked a clear visual identity. It was filled with bulky furniture, minimal daylight, and no cohesive color story, which affected both mood and efficiency.</p>
+
+  <h4>Strategy Used</h4>
+  <p>We began by opening up the space and decluttering. Using #A3B18A as the anchor tone, we introduced complementary natural shades, upgraded the lighting design, and replaced outdated furniture with sleek, modern alternatives that reflected the executive’s personality.</p>
+
+  <h4>Final Look</h4>
+  <p>The result is a polished and functional executive suite. With soothing greens, smart lighting, and elegant finishes, the office now communicates clarity, calm authority, and modern professionalism.</p>
+</div>
+        
+      </section>
+    </div>
+    
+    <style>
+
+.project-description {
+  margin-top: 20px;
+  padding: 16px 20px;
+  background-color: #F0F4ED; /* soft background to contrast with theme */
+  border-left: 6px solid #A3B18A;
+  border-radius: 8px;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.project-description h4 {
+  margin-bottom: 6px;
+  color: #588157; /* slightly deeper tone than #A3B18A */
+  font-weight: 600;
+}
+
+.project-description p {
+  margin-bottom: 16px;
+  color: #3A4D39;
+  line-height: 1.6;
+}
+
+
+@media (min-width: 768px) {
+  .project-description {
+    height: 500px; /* fixed height */
+    overflow-y: auto;
+  }
+}
+</style>
+  </section>
+  
+  <section class="cta">
+  <h2>Transform Your Workspace with Elegance</h2>
+  <p>Bring your vision to life with tailored design solutions rooted in calm, clarity, and sophistication.</p>
+  <button class="cta-btn">Request a Consultation</button>
+  
+  <style>
+/* Call to Action */
+.cta {
+  background-color: #dde5d3;
+  color:#3A4D39;
+  text-align: center;
+  padding: 4rem 3rem;
+  
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.cta h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.cta p {
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color:#3A4D39;
+}
+
+.cta-btn {
+  background-color: #a3b18a;
+  color:#3A4D39;
+  border: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-btn:hover {
+  background-color:#588157;
+}
+    
+  </style>
+  
+  
+</section>
+
+  <!-- Style -->
+  <style>
+    main {
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+
+    .portfolio-hero {
+      background-color: #A3B18A;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: white;
+    }
+
+    .portfolio-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .portfolio-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .project:hover {
+      transform: scale(1.02);
+    }
+
+    .project img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project h3 {
+      padding: 1rem;
+      margin: 0;
+      font-size: 1.1rem;
+      text-align: center;
+      background: #F0EFEB;
+    }
+
+    @media (min-width: 1024px) {
+      .portfolio-hero h1 {
+        font-size: 3rem;
+      }
+    }
+  </style>
+
+  <!-- Script (simple scroll-in animation) -->
+  <script>
+    const projects = document.querySelectorAll('.project');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+        }
+      });
+    }, { threshold: 0.2 });
+
+    projects.forEach(p => {
+      p.style.opacity = 0;
+      p.style.transform = "translateY(30px)";
+      p.style.transition = "all 0.6s ease-out";
+      observer.observe(p);
+    });
+  </script>
+
+</main>
+
+<footer style="background: #A3B18A; color: white; padding: 2rem;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+    
+    <!-- About -->
+    <div style="flex: 1 1 200px;">
+      <h3 style="margin-bottom: 1rem;">About Smart Interior Design.
+      
+      </h3>
+      <p style="line-height: 1.6;">
+At Smart Interior Design, we believe your space should reflect who you are—functional, elegant, and inspiring. Whether you're transforming a single room or designing an entire property, we’re here to bring your vision to life. With a keen eye for detail, innovative concepts, and timeless style, we create interiors that balance beauty with purpose. From concept to completion, we make interior design seamless, personal, and refreshingly smart. Your dream space begins here.
+
+
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1 1 150px;">
+      <h3 style="margin-bottom: 1rem;">Quick Links</h3>
+<ul style="list-style: none; padding: 0; line-height: 2;">
+  <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+  
+  <li><a href="contact.html" style="color: white; text-decoration: none;">contact</a></li>
+  <li><a href="portfolio.html" style="color: white; text-decoration: none;">Portfolio</a></a></li>
+  <li><a href="about.html" style="color: white; text-decoration: none;">About us</a></li>
+  
+  <li><a href="blog.html" style="color: white; text-decoration: none;">Blog</a></li>
+  
+
+  <li><a href="faq.html" style="color: white; text-decoration: none;">FAQ</a></li>
+</ul>
+    </div>
+
+    <!-- Contact -->
+    <div style="flex: 1 1 200px;">
+      <h3 style="margin-bottom: 1rem;">Contact</h3>
+      <p style="line-height: 1.8;">
+        Email: <a href="mailto:yourname@yourdomain.com" style="color: white;">yourname@yourdomain.com</a><br>
+        WhatsApp: <a href="https://wa.me/2547xxxxxxxx" style="color: white;">+2547xxxxxxxx</a><br>
+        Nairobi, Kenya
+      </p>
+    </div>
+
+    <!-- Social -->
+    <div style="flex: 1 1 150px;">
+      <h3 style="margin-bottom: 1rem;">Follow Us</h3>
+      <p>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">Facebook</a><br>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">Instagram</a><br>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">LinkedIn</a>
+      </p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem;">
+    <p style="margin: 0;">&copy; 2025 Smart Interior Design. All rights reserved.</p>
+  </div>
+</footer>
+  <script>
+    const menuIcon = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    function toggleMenu(icon) {
+      icon.classList.toggle("open");
+      navMenu.classList.toggle("show");
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      if (!menuIcon.contains(event.target) && !navMenu.contains(event.target)) {
+        menuIcon.classList.remove("open");
+        navMenu.classList.remove("show");
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+

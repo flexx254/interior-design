@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Interior Design</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      color: #333;
+    }
+
+    header {
+      background:#A3B18A;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      margin-top:35px;
+      margin-left: 30px;
+      font-size: 1.3rem;
+      color: #fff;
+      position:absolute;
+     
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    nav a:last-child {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Hamburger */
+    .menu-icon {
+      display: none;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      cursor: pointer;
+      z-index: 1100;
+      top:2px;
+    }
+
+    .menu-icon span {
+      background: #fff;
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      transition: 0.3s ease;
+    }
+
+    .menu-icon span:nth-child(1) {
+      top: 6px;
+    }
+
+    .menu-icon span:nth-child(2) {
+      top: 13px;
+    }
+
+    .menu-icon span:nth-child(3) {
+      top: 20px;
+    }
+
+    .menu-icon.open span:nth-child(1) {
+      transform: rotate(45deg);
+      top: 13px;
+    }
+
+    .menu-icon.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-icon.open span:nth-child(3) {
+      transform: rotate(-45deg);
+      top: 13px;
+    }
+
+    #navMenu {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+        
+
+            
+        
+      }
+
+      #navMenu {
+        display: none;
+        
+        position:absolute;
+        top: 62px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+
+      #navMenu.show {
+        display: flex;
+      }
+
+      #navMenu a {
+        margin: 10px 0;
+      }
+    }
+.logo-icon{
+  display: flex;
+  align-items: center;
+  gap: 0.1px;
+  color: #fff;
+  
+  
+  margin-left:2px;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  position: relative;
+  margin-left: 0.5rem;
+  
+
+}
+
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+.logo-wrapper {
+  margin-left: clamp(0.5rem, 2vw, 2rem);
+  position: relative;
+}
+
+nav a {
+    color:#3e2723;
+}
+
+nav a:last-child{
+    
+    color: #3e2723;
+}
+
+
+.logo-icon{
+    position:absolute;
+    margin-left: -35px;
+}
+.logo{
+    
+    
+    font-size: 1rem;
+    margin-left:-10px;
+}
+  
+}
+
+
+</style>
+
+
+  <header>
+<div class="logo-wrapper">
+  <div class="logo-icon">
+    <svg width="150" height="40" viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+      <!-- White background -->
+      <rect width="160" height="40" fill = "#A3B18A"></rect>
+
+      <!-- Icon: Chair inside a white circle -->
+      <g transform="translate(20, 20)">
+        <!-- White circle -->
+        <circle cx="0" cy="0" r="14" stroke="white" stroke-width="2.5" fill="none"/>
+
+        <!-- Chair symbol -->
+        <rect x="-5" y="2" width="10" height="5" fill="white" stroke="white" stroke-width="0.5" />
+        <rect x="-3" y="-5" width="6" height="6" fill="white" stroke="white" stroke-width="0.5" />
+        <line x1="-5" y1="7" x2="-5" y2="10" stroke="white" stroke-width="1" />
+        <line x1="5" y1="7" x2="5" y2="10" stroke="white" stroke-width="1" />
+      </g>
+
+      <!-- Branding Text -->
+      <text x="38" y="22" font-family="Georgia, serif" font-size="16" font-weight="bold" fill="white" letter-spacing="0.5">
+        Smart
+      </text>
+      <text x="38" y="34" font-family="Georgia, serif" font-size="10" fill="white" letter-spacing="0.3">
+        Interior Design
+      </text>
+    </svg>
+  </div>
+</div>
+    <div class="menu-icon" onclick="toggleMenu(this)" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+<nav id="navMenu">
+  <a href="index.html">Home</a>
+  <a href="contact.html">Contacts</a>
+  <a href="portfolio.html">Portforlio</a>
+  <a href="about.html">About</a>
+  <a href="blog.html">Blog</a>
+  <a href = "services.html">Services</a>
+  <a href="faq.html">FAQ</a>
+
+  </header>
+
+
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transform Your Space with Elegant Design</h1>
+      <p>We bring your interior dreams to life with timeless style and functional beauty.</p>
+      <a href="#portfolio" class="btn-primary">View Portfolio</a>
+    </div>
+  </section>  <!-- About Preview -->  <section class="about-preview">
+    <h2>About Us</h2>
+    <p>We are a full-service interior design studio crafting beautiful, livable spaces tailored to your lifestyle. Whether it's a cozy home or a stylish office, we make it uniquely yours.</p>
+    <a href="#about" class="link-more">Learn more →</a>
+    
+  </section>  <!-- Featured Projects -->  <section id="portfolio" class="portfolio-preview">
+    <h2>Featured Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"       alt="Modern Living Room" loading = "lazy">
+        <h3>Modern Living Room</h3>
+      </div>
+      <div class="project-card">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Cozy Bedroom" loading = "lazy">
+        <h3>Cozy Bedroom</h3>
+      </div>
+      <div class="project-card">
+        <img src=" https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Elegant Kitchen" loading = "lazy">
+        <h3>Elegant Kitchen</h3>
+      </div>
+    </div>
+    <a href="#portfolio" class="link-more">View all projects →</a>
+  </section> 
+<section class="testimonials">
+  <h2>What Clients Say</h2>
+  <div class="testimonial-slider-wrapper">
+    <button class="arrow left-arrow">&#8249;</button>
+    
+    <div class="testimonial-slider">
+      <div class="testimonial-card">
+        <p>“Absolutely loved their work. Highly recommend!”</p>
+        <span>– Anne M., Karen</span>
+      </div>
+      <div class="testimonial-card">
+        <p>“Working with this team changed our home completely. It’s now our sanctuary.”</p>
+        <span>– Jane D., Nairobi</span>
+      </div>
+      <div class="testimonial-card">
+        <p>“Professional, creative, and always in tune with what we wanted.”</p>
+        <span>– Mark K., Westlands</span>
+      </div>
+      <div class="testimonial-card">
+        <p>“They transformed our space beyond our expectations!”</p>
+        <span>– Brian T., Lavington</span>
+      </div>
+      <div class="testimonial-card">
+        <p>“Exceptional attention to detail. Friendly and responsive.”</p>
+        <span>– Linda A., Runda</span>
+      </div>
+      <div class="testimonial-card">
+        <p>“From design to execution, everything was seamless.”</p>
+        <span>– Kevin O., Kilimani</span>
+      </div>
+    </div>
+
+    <button class="arrow right-arrow">&#8250;</button>
+  </div>
+</section>
+
+<style>
+.testimonials {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.testimonial-slider-wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0; /* more space vertically */
+}
+
+.testimonial-slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.testimonial-card {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  background: #f2f2f2;
+  margin: 0 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #A3B18A;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 24px;
+  z-index: 1;
+  border-radius: 50%;
+  opacity: 0.9;
+  transition: background 0.3s;
+}
+
+.arrow:hover {
+  background: darkgreen;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    max-width: 100%;
+    padding: 0 10px;
+    
+    
+  }
+
+  .testimonial-card {
+    margin: 0;
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .arrow {
+    padding: 8px 12px;
+    font-size: 20px;
+  }
+
+  .left-arrow {
+    left: 5px;
+  }
+
+  .right-arrow {
+    right: 5px;
+  }
+}
+</style>
+
+<script>
+let currentIndex = 0;
+const slider = document.querySelector(".testimonial-slider");
+const totalSlides = document.querySelectorAll(".testimonial-card").length;
+
+function showSlide(index) {
+  slider.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % totalSlides;
+  showSlide(currentIndex);
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+  showSlide(currentIndex);
+}
+
+document.querySelector(".right-arrow").addEventListener("click", () => {
+  nextSlide();
+  resetAutoSlide();
+});
+
+document.querySelector(".left-arrow").addEventListener("click", () => {
+  prevSlide();
+  resetAutoSlide();
+});
+
+// Auto slide every 2 seconds
+let autoSlide = setInterval(nextSlide, 2000);
+
+function resetAutoSlide() {
+  clearInterval(autoSlide);
+  autoSlide = setInterval(nextSlide, 2000);
+}
+</script>
+</section>
+  
+  <!-- Call to Action -->  <section class="cta">
+    <h2>Ready to Start Your Project?</h2>
+    <a href="#contact" class="btn-primary">Get in Touch</a>
+  </section>
+  
+<section class="counters">
+  <div class="circle-container">
+    <svg class="circle" width="160" height="160">
+      <circle cx="80" cy="80" r="65" stroke="#eee" stroke-width="12" fill="none"/>
+      <circle class="progress-ring" cx="80" cy="80" r="65" stroke="#A3B18A" stroke-width="12" fill="none"
+        stroke-dasharray="408" stroke-dashoffset="408"/>
+    </svg>
+    <div class="circle-text" data-target="100">0</div>
+    <p>Projects Completed</p>
+  </div>
+
+  <div class="circle-container">
+    <svg class="circle" width="160" height="160">
+      <circle cx="80" cy="80" r="65" stroke="#eee" stroke-width="12" fill="none"/>
+      <circle class="progress-ring" cx="80" cy="80" r="65" stroke="#A3B18A" stroke-width="12" fill="none"
+        stroke-dasharray="408" stroke-dashoffset="408"/>
+    </svg>
+    <div class="circle-text" data-target="25">0</div>
+    <p>Ongoing Projects</p>
+  </div>
+
+  <div class="circle-container">
+    <svg class="circle" width="160" height="160">
+      <circle cx="80" cy="80" r="65" stroke="#eee" stroke-width="12" fill="none"/>
+      <circle class="progress-ring" cx="80" cy="80" r="65" stroke="#A3B18A" stroke-width="12" fill="none"
+        stroke-dasharray="408" stroke-dashoffset="408"/>
+    </svg>
+    <div class="circle-text" data-target="90">0</div>
+    <p>Happy Clients</p>
+  </div>
+</section>
+<section class="blog-buttons">
+  <a href="  design-trends.html" class="blog-btn">Design Trends →</a>
+  <a href="smart-space.html" class="blog-btn">Space Saving Ideas →</a>
+  <a href="light-transformation.html" class="blog-btn">Color Combinations →</a>
+
+
+<style>
+.blog-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 20px;
+}
+
+.blog-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid #A3B18A;
+  color: #A3B18A;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  width:225px;
+}
+
+.blog-btn:hover {
+  background-color: #A3B18A;
+  color: white;
+  transform: translateX(4px);
+}
+
+@media (min-width: 768px) {
+  .blog-buttons {
+    flex-direction: row;
+    justify-content: center;
+  
+  }
+}
+</style>
+
+<style>
+.counters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f2f2f2;
+  
+}
+.circle-container {
+  position: relative;
+  width: 160px;
+  margin: 0 auto;
+}
+.circle-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  font-size: 2em;
+  font-weight: 700;
+  color: #A3B18A;
+}
+.circle-container p {
+  margin-top: 12px;
+  font-weight: 600;
+  font-size: 1.1em;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+}
+@media (min-width: 768px) {
+  .counters {
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+  }
+}
+
+</section>
+</style>
+
+<script>
+function animateCounters() {
+  document.querySelectorAll('.circle-container').forEach(container => {
+    const text = container.querySelector('.circle-text');
+    const circle = container.querySelector('.progress-ring');
+    const target = +text.getAttribute('data-target');
+    let count = 0;
+    const radius = 65;
+    const circumference = 2 * Math.PI * radius;
+
+    const animate = () => {
+      count++;
+      const progress = circumference - (circumference * count / 100);
+      circle.style.strokeDashoffset = progress;
+      text.textContent = count;
+      if (count < target) {
+        requestAnimationFrame(animate);
+      } else {
+        text.textContent = target;
+      }
+    };
+    animate();
+  });
+}
+
+// Lazy load animation
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animateCounters();
+      observer.disconnect(); // Only once
+    }
+  });
+}, { threshold: 0.4 });
+
+observer.observe(document.querySelector('.counters'));
+</script>
+</main><style>
+    
+
+
+
+.hero {
+  position: relative;
+  height: 70vh;
+  width:100vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+/* Moving image layer */
+
+.hero {
+  position: relative;
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  
+  text-align: center;
+}
+
+
+
+
+/* Full-background zooming image */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  animation: zoomInOut 10s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+
+/* Color Overlay */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(163, 177, 138, 0.5); /* A3B18A with 50% opacity */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideInRight 1s ease-out forwards;
+  animation-delay: 1s; /* p appears after h1 */
+}
+
+.btn-primary {
+  background-color: #ffffff;
+  color: #A3B18A;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+ 
+animation: slideInUp 1s ease-out forwards;
+  animation-delay: 2s;
+  opacity: 0; /* initial state to allow animation */
+}
+
+.btn-primary:hover {
+  background-color: #e0e0e0;
+}
+
+/* About Preview */
+.about-preview {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.about-preview h2 {
+  margin-bottom: 1rem;
+}
+
+.link-more {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #A3B18A;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-more:hover {
+  text-decoration: underline;
+}
+
+/* Portfolio Section */
+.portfolio-preview {
+  padding: 3rem 2rem;
+}
+
+.project-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  max-width: 300px;
+  text-align: center;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-card h3 {
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+
+
+/* Call to Action */
+.cta {
+  background-color: #A3B18A;
+  color: #ffffff;
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.cta h2 {
+  margin-bottom: 1.5rem;
+}
+    
+    
+    
+</style>
+
+<footer style="background: #A3B18A; color: white; padding: 2rem;">
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; max-width: 1200px; margin: auto;">
+    
+    <!-- About -->
+    <div style="flex: 1 1 200px;">
+      <h3 style="margin-bottom: 1rem;">About Smart Interior Design.
+      
+      </h3>
+      <p style="line-height: 1.6;">
+At Smart Interior Design, we believe your space should reflect who you are—functional, elegant, and inspiring. Whether you're transforming a single room or designing an entire property, we’re here to bring your vision to life. With a keen eye for detail, innovative concepts, and timeless style, we create interiors that balance beauty with purpose. From concept to completion, we make interior design seamless, personal, and refreshingly smart. Your dream space begins here.
+
+
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div style="flex: 1 1 150px;">
+      <h3 style="margin-bottom: 1rem;">Quick Links</h3>
+<ul style="list-style: none; padding: 0; line-height: 2;">
+  <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+  
+  <li><a href="contact.html" style="color: white; text-decoration: none;">contact</a></li>
+  <li><a href="portfolio.html" style="color: white; text-decoration: none;">Portfolio</a></a></li>
+  <li><a href="about.html" style="color: white; text-decoration: none;">About us</a></li>
+  
+  <li><a href="blog.html" style="color: white; text-decoration: none;">Blog</a></li>
+  
+
+  <li><a href="faq.html" style="color: white; text-decoration: none;">FAQ</a></li>
+</ul>
+    </div>
+
+    <!-- Contact -->
+    <div style="flex: 1 1 200px;">
+      <h3 style="margin-bottom: 1rem;">Contact</h3>
+      <p style="line-height: 1.8;">
+        Email: <a href="mailto:yourname@yourdomain.com" style="color: white;">yourname@yourdomain.com</a><br>
+        WhatsApp: <a href="https://wa.me/2547xxxxxxxx" style="color: white;">+2547xxxxxxxx</a><br>
+        Nairobi, Kenya
+      </p>
+    </div>
+
+    <!-- Social -->
+    <div style="flex: 1 1 150px;">
+      <h3 style="margin-bottom: 1rem;">Follow Us</h3>
+      <p>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">Facebook</a><br>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">Instagram</a><br>
+        <a href="#" style="color: white; margin-right: 1rem; text-decoration: none;">LinkedIn</a>
+      </p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem; border-top: 1px solid #ccc; padding-top: 1rem;">
+    <p style="margin: 0;">&copy; 2025 Smart Interior Design. All rights reserved.</p>
+  </div>
+</footer>
+  <script>
+    const menuIcon = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    function toggleMenu(icon) {
+      icon.classList.toggle("open");
+      navMenu.classList.toggle("show");
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function (event) {
+      if (!menuIcon.contains(event.target) && !navMenu.contains(event.target)) {
+        menuIcon.classList.remove("open");
+        navMenu.classList.remove("show");
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+
